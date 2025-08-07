@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Settings | LLMChat App{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4">Settings</h2>
+  <a href="/models" class="btn btn-primary mb-4" id="add-model-btn">Add New Model</a>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/settings.js"></script>
+{% endblock %}

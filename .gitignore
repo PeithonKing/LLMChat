@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.llmchat/
+
+# Local settings
+settings.json
+
+# Chat history (user data)
+chat_history/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Ignore backup files
+*~
+
+# Ignore environment files
+.env
+
+# Ignore VSCode settings
+.vscode/

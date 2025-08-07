@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+	<h2>Models</h2>
+	<!-- Existing Models Table -->
+	<table class="table table-bordered align-middle mt-3">
+		<thead>
+			<tr>
+				<th>API Type</th>
+				<th>Nickname</th>
+				<th>Model</th>
+				<th class="text-center">Actions</th>
+			</tr>
+		</thead>
+		<tbody id="existing-models-tbody">
+			<!-- Will be populated by JS -->
+		</tbody>
+	</table>
+
+	<br>
+	<br>
+	<br>
+
+	<!-- Search Models -->
+	<h3 class="mt-4">Search Models</h3>
+	<form id="add-model-form" class="mb-4">
+		<div class="mb-3">
+			<label for="api-type" class="form-label">API Type</label>
+			<select class="form-select bg-dark text-light border-secondary" id="api-type" name="api-type">
+				<option value="Ollama" selected>Ollama</option>
+				<option value="OpenAI">OpenAI</option>
+			</select>
+		</div>
+		<div class="mb-3">
+			<label for="api-url" class="form-label">URL</label>
+			<input type="text" class="form-control bg-dark text-light border-secondary" id="api-url" name="api-url"
+				placeholder="http://rpi.netbird.cloud:11434" />
+		</div>
+		<div class="mb-3" id="api-key-group" style="display:none;">
+			<label for="api-key" class="form-label">API Key</label>
+			<input type="text" class="form-control bg-dark text-light border-secondary" id="api-key" name="api-key" placeholder="sk-..." />
+		</div>
+		<button type="button" class="btn btn-success" id="fetch-model-btn">Fetch</button>
+	</form>
+	<div id="models-table-container">
+		<!-- Models Table Here -->
+	</div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/models.js"></script>
+{% endblock %}

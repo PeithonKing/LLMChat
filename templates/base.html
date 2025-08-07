@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}LLMChat App{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LLMChat: A FastAPI-powered local chat app with a modern sidebar UI.">
+    <meta property="og:title" content="LLMChat App">
+    <meta property="og:description" content="A FastAPI-powered local chat app with a modern sidebar UI.">
+    <meta property="og:image" content="/static/logo.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LLMChat App">
+    <meta name="twitter:description" content="A FastAPI-powered local chat app with a modern sidebar UI.">
+    <meta name="twitter:image" content="/static/logo.png">
+    <link rel="icon" href="/static/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/static/base.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Code:400,500,700&display=swap">
+
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body class="dark-mode">
+    <div class="sidebar d-flex flex-column justify-content-between">
+        <div class="sidebar-top">
+            <h2><a href="/" class="logo-link"><img src="/static/logo.png" alt="LLMChat Logo" class="logo"> LLMChat</a>
+            </h2>
+            <hr class="m-0">
+            <nav class="sidebar-chats">
+                {% for chat in chat_list %}
+                <a class="nav-link" href="/c/{{ chat.id }}">{{ chat.chat_name }}</a>
+                {% endfor %}
+            </nav>
+        </div>
+        <div class="p-3 text-center">
+            <button id="settings-button"
+                class="btn btn-outline-light w-100 d-flex align-items-center justify-content-center mb-2"
+                onclick="window.location.href='/settings'">
+                <i class="bi bi-gear-fill me-2"></i>
+                <span>Settings</span>
+            </button>
+            <button id="toggle-mode"
+                class="btn btn-outline-light w-100 d-flex align-items-center justify-content-center">
+                <i id="mode-icon" class="bi bi-moon-stars-fill me-2"></i>
+                <span id="mode-label">Dark Mode</span>
+            </button>
+        </div>
+    </div>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/base.js"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

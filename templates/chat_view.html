@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}{{ chat_data.chat_name }} | LLMChat App{% endblock %}
+
+{% block content %}
+<div class="container chat-container position-relative" style="max-width: 900px;">
+  <div class="chat-header mb-3">
+    <h2 class="mb-1">{{ chat_data.chat_name }}</h2>
+  </div>
+  <div class="chat-window p-3 rounded chat-window-bg overflow-auto mb-2" id="chat-history"
+    style="height: calc(100vh - 250px);">
+    <!-- Messages will be loaded here by JS -->
+  </div>
+  <form id="chat-form" class="chat-input-form">
+    <div class="mb-2">
+      <textarea id="chat-input" class="form-control" rows="2" placeholder="Type your message..."
+        autocomplete="off"></textarea>
+    </div>
+    <div class="d-flex justify-content-end align-items-center gap-2">
+      <select id="model-select" class="form-select w-auto">
+        <option value="gpt-3.5">GPT-3.5</option>
+        <option value="gpt-4">GPT-4</option>
+        <option value="llama-3">Llama-3</option>
+      </select>
+      <button type="submit" class="btn btn-primary"><i class="bi bi-send"></i></button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="/static/chat_view.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css" id="hljs-light">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css" id="hljs-dark"
+  disabled>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/default.min.css">
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+<script src="/static/chat_view.js"></script>
+{% endblock %}
